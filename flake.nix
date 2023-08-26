@@ -21,6 +21,7 @@
     nixos-hardware,
     mozilla,
     rust-overlay,
+    home-manager,
     ...
   } @ inputs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
@@ -119,7 +120,7 @@
             jack.enable = true;
           };
 
-          # Manage git
+          # Manage programs
           programs = {
             git = {
               enable = true;
@@ -148,17 +149,18 @@
             description = "Niko Cantero";
             extraGroups = ["networkmanager" "wheel"];
             packages = with pkgs; [
-              protonvpn-gui
+              #Entertainment
+              steam
               armcord
-              gitui
+              telegram-desktop
+              #Tools
+              alejandra
+              protonvpn-gui
               lapce
               helix
-              armcord
-              latest.firefox-nightly-bin
+              gitui
               rust-bin.nightly.latest.default
-              telegram-desktop
-              gnomeExtensions.appindicator
-              steam
+              latest.firefox-nightly-bin
               (vscode-with-extensions.override {
                 vscodeExtensions = with vscode-extensions; [
                   bbenoist.nix
@@ -166,8 +168,11 @@
                   rust-lang.rust-analyzer
                 ];
               })
+              #Others
+              gnomeExtensions.appindicator
             ];
           };
+
           # List packages installed in system profile
           # To find package name, go to https://search.nixos.org/packages
           # To find service name, go to https://search.nixos.org/options
