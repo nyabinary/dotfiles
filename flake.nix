@@ -44,11 +44,12 @@
             mozilla.overlay
             rust-overlay.overlays.default
           ];
-          
+
           #NixOS Settings/Config
           nix = {
             settings = {
-              experimental-features = ["auto-allocate-uids" "ca-derivations" "cgroups" "nix-command" "flakes"];
+              # All Experimental Features on as of August 23rd, 2023
+              experimental-features = ["auto-allocate-uids" "ca-derivations" "cgroups" "daemon-trust-override" "discard-references" "dynamic-derivations" "fetch-closure" "flakes" "impure-derivations" "nix-command" "no-url-literals" "parse-toml-timestamps" "read-only-local-store" "recursive-nix" "repl-flake"];
               auto-optimise-store = true;
               keep-derivations = true;
               keep-outputs = true;
@@ -140,37 +141,41 @@
                 };
               };
             };
+            steam = {
+              enable = true;
+            };
           };
 
           # Define user account
-          users.defaultUserShell = pkgs.nushell;
-          users.users.nyanbinary = {
-            isNormalUser = true;
-            description = "Niko Cantero";
-            extraGroups = ["networkmanager" "wheel"];
-            packages = with pkgs; [
-              #Entertainment
-              steam
-              armcord
-              telegram-desktop
-              #Tools
-              alejandra
-              protonvpn-gui
-              lapce
-              helix
-              gitui
-              rust-bin.nightly.latest.default
-              latest.firefox-nightly-bin
-              (vscode-with-extensions.override {
-                vscodeExtensions = with vscode-extensions; [
-                  bbenoist.nix
-                  ms-vsliveshare.vsliveshare
-                  rust-lang.rust-analyzer
-                ];
-              })
-              #Others
-              gnomeExtensions.appindicator
-            ];
+          users = {
+            defaultUserShell = pkgs.nushell;
+            users.nyanbinary = {
+              isNormalUser = true;
+              description = "Niko Cantero";
+              extraGroups = ["networkmanager" "wheel"];
+              packages = with pkgs; [
+                #Entertainment
+                armcord
+                telegram-desktop
+                #Tools
+                alejandra
+                protonvpn-gui
+                lapce
+                helix
+                gitui
+                rust-bin.nightly.latest.default
+                latest.firefox-nightly-bin
+                (vscode-with-extensions.override {
+                  vscodeExtensions = with vscode-extensions; [
+                    bbenoist.nix
+                    ms-vsliveshare.vsliveshare
+                    rust-lang.rust-analyzer
+                  ];
+                })
+                #Others
+                gnomeExtensions.appindicator
+              ];
+            };
           };
 
           # List packages installed in system profile
