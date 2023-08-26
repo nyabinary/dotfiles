@@ -163,6 +163,7 @@
                 #Entertainment
                 armcord
                 telegram-desktop
+                tidal-hifi
                 #Tools
                 alejandra
                 protonvpn-gui
