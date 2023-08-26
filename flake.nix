@@ -119,6 +119,28 @@
             jack.enable = true;
           };
 
+          # Manage git
+          programs = {
+            git = {
+              enable = true;
+              config = {
+                init = {
+                  defaultBranch = "main";
+                };
+                user = {
+                  name = "Niko";
+                  email = "97130632+Nyabinary@users.noreply.github.com";
+                };
+                push = {
+                  autoSetupRemote = true;
+                };
+                credential = {
+                  helper = "store";
+                };
+              };
+            };
+          };
+
           # Define user account
           users.defaultUserShell = pkgs.nushell;
           users.users.nyanbinary = {
@@ -126,7 +148,6 @@
             description = "Niko Cantero";
             extraGroups = ["networkmanager" "wheel"];
             packages = with pkgs; [
-              git
               protonvpn-gui
               armcord
               gitui
