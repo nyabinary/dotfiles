@@ -186,7 +186,7 @@
                     jnoortheen.nix-ide
                     arrterian.nix-env-selector
                     ms-vsliveshare.vsliveshare
-                    rust-lang.rust-analyzer-nightly
+                    rust-lang.rust-analyzer
                     tamasfe.even-better-toml
                   ];
                 })
