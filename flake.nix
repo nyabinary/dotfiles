@@ -200,7 +200,9 @@
                 nil
                 clang
                 mold
-                rust-bin.nightly.latest.default
+                (rust-bin.nightly.latest.default.override {
+                  extensions = ["rust-src"];
+                })
                 rust-analyzer
                 clippy
                 latest.firefox-nightly-bin
@@ -210,6 +212,7 @@
                     arrterian.nix-env-selector
                     ms-vsliveshare.vsliveshare
                     rust-lang.rust-analyzer
+                    tamasfe.even-better-toml
                   ];
                 })
                 #Others
