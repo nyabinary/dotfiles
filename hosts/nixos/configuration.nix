@@ -2,21 +2,9 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
-  system = {
-    stateVersion = "23.11";
-    autoUpgrade = {
-      enable = true;
-      flake = inputs.self.outPath;
-      flags = [
-        "--update-input"
-        "nixpkgs"
-        "-L" # print build logs
-      ];
-      allowReboot = true;
-    };
-  };
 
   imports = [
     "${home-manager}/nixos"

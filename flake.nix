@@ -30,12 +30,26 @@
   } @ inputs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
           home-manager = {
             users.nyanbinary = ./hosts/nixos/home.nix;
+          };
+          system = {
+            stateVersion = "23.11";
+            autoUpgrade = {
+              enable = true;
+              flake = inputs.self.outPath;
+              flags = [
+                "--update-input"
+                "nixpkgs"
+                "-L" # print build logs
+              ];
+              allowReboot = true;
+            };
           };
         }
       ];
