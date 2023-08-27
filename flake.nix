@@ -188,6 +188,7 @@
                 lapce
                 helix
                 gitui
+                nil
                 rust-bin.nightly.latest.default
                 latest.firefox-nightly-bin
                 (vscode-with-extensions.override {
