@@ -9,10 +9,6 @@
     mozilla = {
       url = "github:mozilla/nixpkgs-mozilla/master";
     };
-    # rust-overlay = {
-    #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +60,6 @@
           nixpkgs.overlays = [
             mozilla.overlay
             fenix.overlays.default
-            # rust-overlay.overlays.default
           ];
 
           #NixOS Settings/Config
@@ -72,6 +67,7 @@
             settings = {
               # All Experimental Features on as of August 23rd, 2023
               experimental-features = ["auto-allocate-uids" "ca-derivations" "cgroups" "daemon-trust-override" "discard-references" "dynamic-derivations" "fetch-closure" "flakes" "impure-derivations" "nix-command" "no-url-literals" "parse-toml-timestamps" "read-only-local-store" "recursive-nix" "repl-flake"];
+              trusted-users = [ "root" "nyanbinary" ];
               auto-optimise-store = true;
               auto-allocate-uids = true;
               keep-derivations = true;
@@ -161,7 +157,7 @@
             # If you want to use JACK applications, uncomment this
             jack.enable = true;
           };
-
+          
           # Define user account
           users = {
             defaultUserShell = pkgs.nushell;
