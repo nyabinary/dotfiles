@@ -9,8 +9,16 @@
     mozilla = {
       url = "github:mozilla/nixpkgs-mozilla/master";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    # rust-overlay = {
+    #   url = "github:oxalica/rust-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -20,7 +28,7 @@
     nixpkgs,
     nixos-hardware,
     mozilla,
-    rust-overlay,
+    fenix,
     home-manager,
     ...
   } @ inputs: {
@@ -48,13 +56,15 @@
           };
 
           imports = [
+            "${home-manager}/nixos"
             ./hardware-configuration.nix
             nixos-hardware.nixosModules.framework-13th-gen-intel
           ];
 
           nixpkgs.overlays = [
             mozilla.overlay
-            rust-overlay.overlays.default
+            fenix.overlays.default
+            # rust-overlay.overlays.default
           ];
 
           #NixOS Settings/Config
@@ -81,8 +91,6 @@
           # To find service name, go to https://search.nixos.org/options
           environment = {
             etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
-            systemPackages = with pkgs; [
-            ];
           };
 
           # Configure nixpkgs
@@ -154,31 +162,6 @@
             jack.enable = true;
           };
 
-          # Manage programs
-          programs = {
-            git = {
-              enable = true;
-              config = {
-                init = {
-                  defaultBranch = "main";
-                };
-                user = {
-                  name = "Niko";
-                  email = "97130632+Nyabinary@users.noreply.github.com";
-                };
-                push = {
-                  autoSetupRemote = true;
-                };
-                credential = {
-                  helper = "store";
-                };
-              };
-            };
-            steam = {
-              enable = true;
-            };
-          };
-
           # Define user account
           users = {
             defaultUserShell = pkgs.nushell;
@@ -195,29 +178,89 @@
                 alejandra
                 protonvpn-gui
                 lapce
-                helix
                 gitui
                 nil
                 clang
                 mold
-                (rust-bin.nightly.latest.default.override {
-                  extensions = ["rust-src"];
-                })
-                rust-analyzer
-                clippy
+                fenix.packages.${system}.default.toolchain
+                fenix.packages.${system}.latest.rust-analyzer
                 latest.firefox-nightly-bin
                 (vscode-with-extensions.override {
                   vscodeExtensions = with vscode-extensions; [
                     jnoortheen.nix-ide
                     arrterian.nix-env-selector
                     ms-vsliveshare.vsliveshare
-                    rust-lang.rust-analyzer
+                    rust-lang.rust-analyzer-nightly
                     tamasfe.even-better-toml
                   ];
                 })
                 #Others
                 gnomeExtensions.appindicator
               ];
+            };
+          };
+
+          # Home manager
+          home-manager = {
+            users.nyanbinary = {pkgs, ...}: {
+              home.stateVersion = "23.11";
+
+              # Configure programs
+              programs = {
+                nushell = {
+                  enable = true;
+                  shellAliases = {
+                    switch = "sudo nixos-rebuild switch --impure";
+                  };
+                  environmentVariables = {
+                    EDITOR = "hx";
+                    VISUAL = "bat";
+                  };
+                  configFile.text = ''
+                    $env.config = {
+                      show_banner: false,
+                    }
+                  '';
+                };
+                git = {
+                  enable = true;
+                  delta.enable = true;
+                  extraConfig = {
+                    "init" = {
+                      defaultBranch = "main";
+                    };
+                    "user" = {
+                      name = "Niko";
+                      email = "97130632+Nyabinary@users.noreply.github.com";
+                    };
+                    "push" = {
+                      autoSetupRemote = true;
+                    };
+                    "credential" = {
+                      helper = "store";
+                    };
+                  };
+                };
+                helix = {
+                  enable = true;
+                  settings = {
+                    theme = "catppuccin_mocha";
+                    editor = {
+                      line-number = "relative";
+                      lsp.display-messages = true;
+                    };
+                  };
+                };
+                # vscode = {
+                #   enable = true;
+                # };
+                autojump = {
+                  enable = true;
+                };
+                bat = {
+                  enable = true;
+                };
+              };
             };
           };
 
