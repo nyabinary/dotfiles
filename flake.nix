@@ -191,7 +191,8 @@
                 latest.firefox-nightly-bin
                 (vscode-with-extensions.override {
                   vscodeExtensions = with vscode-extensions; [
-                    bbenoist.nix
+                    jnoortheen.nix-ide
+                    arrterian.nix-env-selector
                     ms-vsliveshare.vsliveshare
                     rust-lang.rust-analyzer
                   ];
