@@ -38,6 +38,10 @@
           home-manager = {
             users.nyanbinary = ./hosts/nixos/home.nix;
           };
+          nixpkgs.overlays = [
+            mozilla.overlay
+            fenix.overlays.default
+          ];
           system = {
             stateVersion = "23.11";
             autoUpgrade = {

@@ -12,11 +12,6 @@
     nixos-hardware.nixosModules.framework-13th-gen-intel
   ];
 
-  nixpkgs.overlays = [
-    mozilla.overlay
-    fenix.overlays.default
-  ];
-
   #NixOS Settings/Config
   nix = {
     settings = {
