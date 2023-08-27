@@ -63,6 +63,7 @@
               # All Experimental Features on as of August 23rd, 2023
               experimental-features = ["auto-allocate-uids" "ca-derivations" "cgroups" "daemon-trust-override" "discard-references" "dynamic-derivations" "fetch-closure" "flakes" "impure-derivations" "nix-command" "no-url-literals" "parse-toml-timestamps" "read-only-local-store" "recursive-nix" "repl-flake"];
               auto-optimise-store = true;
+              auto-allocate-uids = true;
               keep-derivations = true;
               keep-outputs = true;
               sandbox = true;
