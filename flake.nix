@@ -212,9 +212,9 @@
           services = {
             fwupd.enable = true; # To update framework laptop firmware, run sudo fwupdmgr update
             flatpak.enable = true;
-            thermald.enable = true;
             dbus.implementation = "broker";
             power-profiles-daemon.enable = false;
+            thermald.enable = true; # Intel only
             tlp.enable = true;
           };
         })
