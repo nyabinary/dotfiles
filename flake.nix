@@ -76,7 +76,14 @@
             registry.nixpkgs.flake = inputs.nixpkgs;
             nixPath = ["nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels"];
           };
-          environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+          # List packages installed in system profile
+          # To find package name, go to https://search.nixos.org/packages
+          # To find service name, go to https://search.nixos.org/options
+          environment = {
+            etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+            systemPackages = with pkgs; [
+            ];
+          };
 
           # Configure nixpkgs
           nixpkgs.config = {
@@ -189,6 +196,8 @@
                 helix
                 gitui
                 nil
+                clang
+                mold
                 rust-bin.nightly.latest.default
                 latest.firefox-nightly-bin
                 (vscode-with-extensions.override {
@@ -204,12 +213,6 @@
               ];
             };
           };
-
-          # List packages installed in system profile
-          # To find package name, go to https://search.nixos.org/packages
-          # To find service name, go to https://search.nixos.org/options
-          environment.systemPackages = with pkgs; [
-          ];
 
           # Services
           services = {
