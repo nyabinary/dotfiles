@@ -33,7 +33,19 @@
           lib,
           ...
         }: {
-          system.stateVersion = "23.11";
+          system = {
+            stateVersion = "23.11";
+            autoUpgrade = {
+              enable = true;
+              flake = inputs.self.outPath;
+              flags = [
+                "--update-input"
+                "nixpkgs"
+                "-L" # print build logs
+              ];
+              allowReboot = true;
+            };
+          };
 
           imports = [
             ./hardware-configuration.nix
@@ -54,6 +66,11 @@
               keep-derivations = true;
               keep-outputs = true;
               sandbox = true;
+            };
+            gc = {
+              automatic = true;
+              dates = "weekly";
+              options = "--delete-older-than 30d";
             };
             registry.nixpkgs.flake = inputs.nixpkgs;
             nixPath = ["nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels"];
@@ -194,6 +211,7 @@
           # Services
           services = {
             fwupd.enable = true; # To update framework laptop firmware, run sudo fwupdmgr update
+            flatpak.enable = true;
             thermald.enable = true;
             dbus.implementation = "broker";
             power-profiles-daemon.enable = false;
