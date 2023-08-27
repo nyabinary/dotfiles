@@ -173,4 +173,4 @@
     thermald.enable = true; # Intel only
     tlp.enable = true;
   };
-};
+}
