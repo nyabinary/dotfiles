@@ -211,7 +211,7 @@
           # Services
           services = {
             fwupd = {
-              enable = true; # To update framework laptop firmware, run sudo fwupdmgr update
+              enable = true;
               extraRemotes = ["lvfs-testing"];
             };
             flatpak.enable = true;
