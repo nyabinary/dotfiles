@@ -127,8 +127,8 @@
         nil
         clang
         mold
-        fenix.packages.${system}.default.toolchain
-        fenix.packages.${system}.latest.rust-analyzer
+        inputs.fenix.packages.${system}.default.toolchain
+        inputs.fenix.packages.${system}.latest.rust-analyzer
         latest.firefox-nightly-bin
         (vscode-with-extensions.override {
           vscodeExtensions = with vscode-extensions; [
