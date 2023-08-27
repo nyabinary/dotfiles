@@ -210,7 +210,10 @@
 
           # Services
           services = {
-            fwupd.enable = true; # To update framework laptop firmware, run sudo fwupdmgr update
+            fwupd = {
+              enable = true; # To update framework laptop firmware, run sudo fwupdmgr update
+              extraRemotes = ["lvfs-testing"];
+            };
             flatpak.enable = true;
             dbus.implementation = "broker";
             power-profiles-daemon.enable = false;
