@@ -101,7 +101,9 @@
           # Enable networking
           networking = {
             hostName = "nixos";
+            wireless.iwd.enable = true;
             networkmanager.enable = true;
+            networkmanager.wifi.backend = "iwd";
           };
 
           # Set your time zone
@@ -199,6 +201,7 @@
                 clang
                 mold
                 rust-bin.nightly.latest.default
+                rust-analyzer
                 latest.firefox-nightly-bin
                 (vscode-with-extensions.override {
                   vscodeExtensions = with vscode-extensions; [
