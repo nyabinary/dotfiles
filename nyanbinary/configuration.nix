@@ -87,9 +87,6 @@
       description = "Niko Cantero";
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
-        # Add hello package
-        inputs.hello.defaultPackage.x86_64-linux
-
         #Entertainment
         armcord
         element-desktop
