@@ -116,6 +116,7 @@
       packages = with pkgs; [
         #Entertainment
         armcord
+        element-desktop-wayland
         telegram-desktop
         tidal-hifi
         #Tools
