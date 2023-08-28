@@ -3,18 +3,19 @@
 }: {
 
   imports = [
-    ../../modules
+    ../../modules/homeModules
   ];
 
   home.stateVersion = "23.11";
 
+  homeModules = {
+    direnv.enable = true;
+    vscode.enable = true;
+  };
+  
+
   # Configure programs
   programs = {
-    direnv = {
-      enable = true;
-      enableNushellIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
-    };
 
     nushell = {
       enable = true;

@@ -12,7 +12,6 @@
       silent = false;
       persistDerivations = true;
       loadInNixShell = true;
-      direnvrcExtra = "";
       nix-direnv = {
         enable = true;
         package = pkgs.nix-direnv;
