@@ -1,8 +1,6 @@
 {...}: {
   imports = [
-    ./rust
-    ./vscode
-    ./helix
-    ./direnv
+    ./systemModules
+    ./homeModules
   ];
 }

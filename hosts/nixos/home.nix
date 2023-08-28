@@ -14,7 +14,6 @@
     vscode.enable = true;
   };
   
-
   # Configure programs
   programs = {
 
