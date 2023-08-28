@@ -1,6 +1,4 @@
 {
-  pkgs,
-  inputs,
   ...
 }: {
   home.stateVersion = "23.11";
@@ -50,12 +48,6 @@
           lsp.display-messages = true;
         };
       };
-    };
-    # vscode = {
-    #   enable = true;
-    # };
-    autojump = {
-      enable = true;
     };
     bat = {
       enable = true;
