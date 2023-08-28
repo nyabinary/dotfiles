@@ -7,6 +7,7 @@
   ];
 
   home.stateVersion = "23.11";
+  nixpkgs.config.allowUnfree = true;
 
   homeModules = {
     direnv.enable = true;
