@@ -14,7 +14,7 @@
       };
       environmentVariables = {
         EDITOR = "hx";
-        VISUAL = "bat";
+        VISUAL = "lapce";
       };
       configFile.text = ''
         $env.config = {
