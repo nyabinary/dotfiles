@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  options.systemModules.vscode.enable = lib.mkEnableOption "";
+  options.homeModules.vscode.enable = lib.mkEnableOption "";
 
-  config = lib.mkIf config.systemModules.vscode.enable {
-    home-manager.users.users.nyanbinary.home.packages = with pkgs; [
+  config = lib.mkIf config.homeModules.vscode.enable {
+    home.packages = with pkgs; [
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           jnoortheen.nix-ide
