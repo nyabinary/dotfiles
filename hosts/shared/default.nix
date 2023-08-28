@@ -30,4 +30,10 @@
   environment = {
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
   };
+
+  # NIX-DIRENV Settings
+  environment.systemPackages = with pkgs; [ direnv nix-direnv ];
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
 }

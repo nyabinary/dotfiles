@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ../modules
-    ../modules/settings.nix
+    ../../modules
+    ../shared
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];

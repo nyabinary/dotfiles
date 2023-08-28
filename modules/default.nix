@@ -3,5 +3,6 @@
     ./rust
     ./vscode
     ./helix
+    ./direnv
   ];
 }
