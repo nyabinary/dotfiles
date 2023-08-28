@@ -1,6 +1,7 @@
 {
   ...
 }: {
+<<<<<<< HEAD
 
   imports = [
     ../../modules/homeModules
@@ -14,6 +15,19 @@
     vscode.enable = true;
   };
   
+=======
+
+  imports = [
+    ../../modules
+  ];
+  
+  home.stateVersion = "23.11";
+
+  homeModules = {
+    direnv.enable = true;
+  };
+
+>>>>>>> 130f391 (attempt to install direnv)
   # Configure programs
   programs = {
 
