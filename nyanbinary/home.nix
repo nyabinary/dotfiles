@@ -5,6 +5,12 @@
 
   # Configure programs
   programs = {
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
     nushell = {
       enable = true;
       shellAliases = {
