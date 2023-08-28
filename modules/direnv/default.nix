@@ -1,14 +1,22 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
-  options.homeModules.direnv.enable = lib.mkEnableOption "";
+  options.systemModules.direnv.enable = lib.mkEnableOption "";
 
-  config = lib.mkIf config.homeModules.direnv.enable {
+  config = lib.mkIf config.systemModules.direnv.enable {
     programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
+      package = pkgs.direnv;
+      silent = false;
+      persistDerivations = true;
+      loadInNixShell = true;
+      direnvrcExtra = "";
+      nix-direnv = {
+        enable = true;
+        package = pkgs.nix-direnv;
+      };
     };
   };
 }

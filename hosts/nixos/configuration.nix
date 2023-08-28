@@ -13,6 +13,7 @@
   # System components
   systemModules = {
     rust.enable = true;
+    direnv.enable = true;
     vscode.enable = true;
   };
 

@@ -5,12 +5,8 @@
   imports = [
     ../../modules
   ];
-  
-  home.stateVersion = "23.11";
 
-  homeModules = {
-    direnv.enable = true;
-  };
+  home.stateVersion = "23.11";
 
   # Configure programs
   programs = {

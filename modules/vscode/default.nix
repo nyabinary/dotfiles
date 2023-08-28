@@ -7,7 +7,7 @@
   options.systemModules.vscode.enable = lib.mkEnableOption "";
 
   config = lib.mkIf config.systemModules.vscode.enable {
-    users.users.nyanbinary.packages = with pkgs; [
+    home-manager.users.nyanbinary.home.packages = with pkgs; [
         (vscode-with-extensions.override {
           vscodeExtensions = with vscode-extensions; [
             jnoortheen.nix-ide
