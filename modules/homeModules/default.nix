@@ -5,5 +5,6 @@
     ./vscode
     ./nushell
     ./helix
+    ./gitui
   ];
 }

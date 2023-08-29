@@ -49,22 +49,6 @@
     };
   };
 
-  # Enable the X11 windowing system
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable CUPS to print documents
-  services.printing.enable = true;
-
   # Enable sound with pipewire
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -94,8 +78,6 @@
         #Tools
         alejandra
         protonvpn-gui
-        lapce
-        gitui
         nil
         latest.firefox-nightly-bin
         #Others
@@ -114,5 +96,14 @@
     power-profiles-daemon.enable = false;
     thermald.enable = true; # Intel only
     tlp.enable = true; # Laptop/Power Savings
+    printing.enable = true; # Enable CUPS to print documents
+    # Enable the GNOME Desktop Environment.
+    xserver = {
+      enable = true;
+      layout = "us";
+      xkbVariant = "";
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
   };
 }

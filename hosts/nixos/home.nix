@@ -14,5 +14,6 @@
     vscode.enable = true;
     nushell.enable = true;
     helix.enable = true;
+    gitui.enable = true;
   };
 }

@@ -36,6 +36,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
+            backupFileExtension = "backup";
             users.nyanbinary = ./hosts/nixos/home.nix;
           };
           nixpkgs.overlays = [
