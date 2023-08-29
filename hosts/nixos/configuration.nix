@@ -13,14 +13,13 @@
   # System components
   systemModules = {
     rust.enable = true;
-    helix.enable = true;
   };
 
   # Boot & Bootloader Options
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest; # Use latest stable Linux
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest; # Use latest stable Linux
   };
 
   # Enable networking
