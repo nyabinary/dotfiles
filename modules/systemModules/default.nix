@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./rust
-    ./vscode
     ./helix
   ];
 }

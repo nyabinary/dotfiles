@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ../modules
-    ../modules/settings.nix
+    ../../modules/systemModules
+    ../shared
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
@@ -13,7 +13,7 @@
   # System components
   systemModules = {
     rust.enable = true;
-    vscode.enable = true;
+    helix.enable = true;
   };
 
   # Boot & Bootloader Options

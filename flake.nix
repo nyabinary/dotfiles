@@ -32,11 +32,11 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        ./nyanbinary/configuration.nix
+        ./hosts/nixos/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            users.nyanbinary = ./nyanbinary/home.nix;
+            users.nyanbinary = ./hosts/nixos/home.nix;
           };
           nixpkgs.overlays = [
             mozilla.overlay

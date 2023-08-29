@@ -7,7 +7,7 @@
 }: {
   options.systemModules.helix.enable = lib.mkEnableOption "";
 
-  config = lib.mkIf config.systemModules.helix.enable {
-    
-  };
+  config =
+    lib.mkIf config.systemModules.helix.enable {
+    };
 }

@@ -1,16 +1,17 @@
-{
-  ...
-}: {
+{...}: {
+  imports = [
+    ../../modules/homeModules
+  ];
+
   home.stateVersion = "23.11";
+  nixpkgs.config.allowUnfree = true;
 
-  # Configure programs
+  homeModules = {
+    direnv.enable = true;
+    vscode.enable = true;
+  };
+
   programs = {
-    direnv = {
-      enable = true;
-      enableNushellIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
-    };
-
     nushell = {
       enable = true;
       shellAliases = {
