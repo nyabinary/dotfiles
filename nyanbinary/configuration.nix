@@ -98,6 +98,7 @@
         lapce
         gitui
         nil
+        latest.firefox-nightly-bin
         #Others
         gnomeExtensions.appindicator
       ];
