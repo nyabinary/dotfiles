@@ -114,6 +114,6 @@
     dbus.implementation = "broker";
     power-profiles-daemon.enable = false;
     thermald.enable = true; # Intel only
-    tlp.enable = true;
+    tlp.enable = true; # Laptop/Power Savings
   };
 }
