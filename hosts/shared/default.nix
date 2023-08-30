@@ -33,11 +33,10 @@
   # Make local channel point to our flake
   environment = {
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+    # NIX-DIRENV Settings
+    systemPackages = with pkgs; [direnv nix-direnv];
+    pathsToLink = [
+      "/share/nix-direnv"
+    ];
   };
-
-  # NIX-DIRENV Settings
-  environment.systemPackages = with pkgs; [direnv nix-direnv];
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
 }
