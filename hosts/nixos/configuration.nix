@@ -27,7 +27,6 @@
     pulseaudio.enable = false;
     bluetooth = {
       enable = true;
-      General.Experimental = true;
     };
   };
 
