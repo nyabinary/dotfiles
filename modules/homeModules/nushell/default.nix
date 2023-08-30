@@ -10,6 +10,7 @@
       enable = true;
       shellAliases = {
         switch = "sudo nixos-rebuild switch --impure";
+        boot = "sudo nixos-rebuild boot --impure""
       };
       environmentVariables = {
         EDITOR = "hx";
