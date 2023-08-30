@@ -25,11 +25,12 @@
   };
 
   # Configure nixpkgs
-  nixpkgs.config = {
-    allowUnfree = true;
-    firefox.speechSynthesisSupport = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      firefox.speechSynthesisSupport = true;
+    };
   };
-
   # Make local channel point to our flake
   environment = {
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
