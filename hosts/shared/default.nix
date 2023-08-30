@@ -7,8 +7,7 @@
   nix = {
     settings = {
       # All Experimental Features on as of August 23rd, 2023
-      experimental-features = 
-      [
+      experimental-features = [
       "auto-allocate-uids" 
       "ca-derivations" 
       "cgroups" 
