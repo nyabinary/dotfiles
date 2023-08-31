@@ -1,10 +1,10 @@
 {...}: {
   imports = [
-    ./git
     ./direnv
-    ./vscode
-    ./nushell
-    ./helix
+    ./git
     ./gitui
+    ./helix
+    ./nushell
+    ./vscode
   ];
 }

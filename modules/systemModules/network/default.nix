@@ -17,8 +17,8 @@
         networkmanager.wifi.backend = "iwd";
       };
     })
-    (lib.mkIf config.systemModules.network.nyan.enable {
-      #module - nyan
-    })
+   # (lib.mkIf config.systemModules.network.nyan.enable {
+   #   module - nyan
+   # })
   ];
 }
