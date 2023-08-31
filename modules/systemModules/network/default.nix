@@ -1,6 +1,8 @@
 {
   lib,
+  pkgs,
   config,
+  inputs,
   ...
 }: {
   options.systemModules.network.binary.enable = lib.mkEnableOption "";

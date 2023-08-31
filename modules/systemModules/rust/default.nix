@@ -1,6 +1,8 @@
 {
   lib,
+  pkgs,
   config,
+  inputs,
   ...
 }: {
   options.systemModules.rust.enable = lib.mkEnableOption "";
