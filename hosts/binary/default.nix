@@ -68,6 +68,13 @@
         element-desktop
         telegram-desktop
         tidal-hifi
+        #TEMP
+        (pkgs.discord-development.override {
+          # remove any overrides that you don't want
+          withOpenASAR = true;
+          withVencord = true;
+        })
+        #TEMP
         #Tools
         alejandra
         protonvpn-gui
