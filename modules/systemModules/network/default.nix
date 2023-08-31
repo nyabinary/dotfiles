@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.network.binary.enable = lib.mkEnableOption "";
@@ -12,13 +10,14 @@
     (lib.mkIf config.systemModules.network.binary.enable {
       networking = {
         hostName = "binary";
+        wireless.enable = false;
         wireless.iwd.enable = true;
         networkmanager.enable = true;
         networkmanager.wifi.backend = "iwd";
       };
     })
-   # (lib.mkIf config.systemModules.network.nyan.enable {
-   #   module - nyan
-   # })
+    # (lib.mkIf config.systemModules.network.nyan.enable {
+    #   module - nyan
+    # })
   ];
 }

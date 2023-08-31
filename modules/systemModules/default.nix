@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./bluetooth
     ./rust
     ./network
   ];
