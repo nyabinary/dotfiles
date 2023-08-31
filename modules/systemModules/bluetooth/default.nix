@@ -1,6 +1,8 @@
 {
   lib,
+  pkgs,
   config,
+  inputs,
   ...
 }: {
   options.systemModules.bluetooth.binary.enable = lib.mkEnableOption "";
