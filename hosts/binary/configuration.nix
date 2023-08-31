@@ -30,14 +30,6 @@
     };
   };
 
-  # Enable networking
-  networking = {
-    hostName = "framework-13";
-    wireless.iwd.enable = true;
-    networkmanager.enable = true;
-    networkmanager.wifi.backend = "iwd";
-  };
-
   # Time Options
   time = {
     timeZone = "America/New_York";

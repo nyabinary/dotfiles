@@ -28,16 +28,16 @@
     home-manager,
     ...
   } @ inputs: {
-    nixosConfigurations."framework-13" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."binary" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        ./hosts/framework-13/configuration.nix
+        ./hosts/binary/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             backupFileExtension = "backup";
-            users.nyanbinary = ./hosts/framework-13/home.nix;
+            users.nyanbinary = ./hosts/binary/home.nix;
           };
           nixpkgs.overlays = [
             mozilla.overlay
