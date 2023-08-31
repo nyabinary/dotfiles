@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../shared
     ../../modules/homeModules
   ];
 

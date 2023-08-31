@@ -32,7 +32,7 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        ./hosts/binary/configuration.nix
+        ./hosts/binary/default.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
