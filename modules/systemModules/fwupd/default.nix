@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.fwupd.binary.enable {
-      service.fwupd = {
+      services.fwupd = {
         enable = true;
         extraRemotes = ["lvfs-testing"];
       };
