@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.flatpak.nyan.enable = lib.mkEnableOption "";

@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.pipewire.nyan.enable = lib.mkEnableOption "";

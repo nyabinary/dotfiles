@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.printing.nyan.enable = lib.mkEnableOption "";

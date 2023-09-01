@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.fwupd.nyan.enable = lib.mkEnableOption "";

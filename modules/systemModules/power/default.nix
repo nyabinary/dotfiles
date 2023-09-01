@@ -1,8 +1,6 @@
 {
   lib,
-  pkgs,
   config,
-  inputs,
   ...
 }: {
   options.systemModules.power.nyan.enable = lib.mkEnableOption "";
