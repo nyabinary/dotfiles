@@ -4,34 +4,16 @@
   ...
 }: {
   imports = [
-    ../../modules/systemModules
     ../shared
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
-
-  # System components
-  systemModules = {
-    rust.enable = true;
-    i18n = {
-      enable = true;
-      locale = "en_US.UTF-8";
-    };
-  };
 
   # Boot & Bootloader Options
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-  };
-
-  # Hardware Options
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth = {
-      enable = true;
-    };
   };
 
   # Time Options
@@ -83,29 +65,5 @@
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
-    # Enable sound with pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      jack.enable = true;
-    };
-    # Enable Firmware Updates
-    fwupd = {
-      enable = true;
-      extraRemotes = ["lvfs-testing"];
-    };
-    # Enable CUPS to print documents
-    printing = {
-      enable = true;
-      startWhenNeeded = true;
-    };
-    flatpak.enable = true;
-    dbus.implementation = "broker";
-    power-profiles-daemon.enable = false;
-    thermald.enable = true; # Intel only
-    tlp.enable = true; # Laptop/Power Savings
   };
 }

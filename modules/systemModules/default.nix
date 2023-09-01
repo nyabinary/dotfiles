@@ -1,8 +1,14 @@
 {...}: {
   imports = [
     ./bluetooth
-    ./rust
-    ./network
+    ./dbus
+    ./flatpak
+    ./fwupd
     ./i18n
+    ./network
+    ./pipewire
+    ./power
+    ./printing
+    ./rust
   ];
 }
