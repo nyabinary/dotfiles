@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.printing.binary.enable {
-      service.printing = {
+      services.printing = {
         enable = true;
         startWhenNeeded = true;
       };
