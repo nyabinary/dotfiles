@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../../modules
+    ../../../modules/systemModules
   ];
 
   systemModules = {

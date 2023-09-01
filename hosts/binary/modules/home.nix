@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../../modules
+    ../../../modules/homeModules
   ];
 
   # State version
