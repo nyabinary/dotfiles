@@ -6,5 +6,6 @@
     ./helix
     ./nushell
     ./vscode
+    ./firefox
   ];
 }

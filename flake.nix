@@ -7,14 +7,10 @@
       url = "github:NixOS/nixos-hardware/master";
     };
     mozilla = {
-      url = "github:mozilla/nixpkgs-mozilla/master";
+      url = "github:colemickens/flake-firefox-nightly";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    fenix = {
-      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -22,10 +18,9 @@
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     nixos-hardware,
     mozilla,
-    fenix,
-    home-manager,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -40,10 +35,6 @@
               backupFileExtension = "backup";
               users.nyanbinary = ./hosts/binary/modules/home.nix;
             };
-            nixpkgs.overlays = [
-              mozilla.overlay
-              fenix.overlays.default
-            ];
             system = {
               stateVersion = "23.11";
               autoUpgrade = {
