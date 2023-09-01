@@ -5,7 +5,8 @@
 }: {
   imports = [
     ../shared
-    ../modules
+    ../modules/home.nix
+    ../modules/system.nix # alternative, create modules/default.nix which imports these two
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];

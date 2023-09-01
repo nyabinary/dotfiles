@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   ...
 }: {
   # Nix specific settings
@@ -24,7 +23,6 @@
         "recursive-nix"
         "repl-flake"
       ];
-      trusted-users = ["root" "nyanbinary"];
       auto-optimise-store = true;
       auto-allocate-uids = true;
       keep-derivations = true;
@@ -44,16 +42,12 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      firefox.speechSynthesisSupport = true;
+      firefox.speechSynthesisSupport = true; # TODO: move
     };
   };
+  
   # Make local channel point to our flake
   environment = {
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
-    # NIX-DIRENV Settings
-    systemPackages = with pkgs; [direnv nix-direnv];
-    pathsToLink = [
-      "/share/nix-direnv"
-    ];
   };
 }

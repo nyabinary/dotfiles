@@ -3,20 +3,15 @@
   config,
   ...
 }: {
-  options.systemModules.power.nyan.enable = lib.mkEnableOption "";
-  options.systemModules.power.binary.enable = lib.mkEnableOption "";
+  options.systemModules.power.enable = lib.mkEnableOption "";
+  options.systemModules.power.isIntel = lib.mkEnableOption "";
+  options.systemModules.power.useTLP = lib.mkEnableOption "";
 
-  config = lib.mkMerge [
-    #(lib.mkIf config.systemModules.NAME.FW16.enable {
-    #module
-
-    #})
-    (lib.mkIf config.systemModules.power.binary.enable {
-      services = {
-        power-profiles-daemon.enable = false;
-        thermald.enable = true; # Intel only
-        tlp.enable = true; # Laptop/Power Savings
-      };
-    })
-  ];
+  config = lib.mkIf config.systemModules.power.enable {
+    services = {
+      power-profiles-daemon.enable = !config.systemModules.power.useTLP;
+      thermald.enable = config.systemModules.power.isIntel; # Intel only
+      tlp.enable = config.systemModules.power.useTLP; # Laptop/Power Savings
+    };
+  };
 }

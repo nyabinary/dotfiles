@@ -3,18 +3,11 @@
   config,
   ...
 }: {
-  options.systemModules.bluetooth.nyan.enable = lib.mkEnableOption "";
-  options.systemModules.bluetooth.binary.enable = lib.mkEnableOption "";
+  options.systemModules.bluetooth.enable = lib.mkEnableOption "";
 
-  config = lib.mkMerge [
-    #(lib.mkIf config.systemModules.NAME.FW16.enable {
-    #module
-
-    #})
-    (lib.mkIf config.systemModules.bluetooth.binary.enable {
-      hardware.bluetooth = {
-        enable = true;
-      };
-    })
-  ];
+  config = lib.mkIf config.systemModules.bluetooth.enable {
+    hardware.bluetooth = {
+      enable = true;
+    };
+  };
 }

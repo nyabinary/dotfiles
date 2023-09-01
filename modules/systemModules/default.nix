@@ -9,6 +9,5 @@
     ./pipewire
     ./power
     ./printing
-    ./rust
   ];
 }
