@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.flatpak.binary.enable {
-      service.flatpak = {
+      services.flatpak = {
         enable = true;
       };
     })

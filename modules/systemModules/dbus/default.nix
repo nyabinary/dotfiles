@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.dbus.binary.enable {
-      service.dbus = {
+      services.dbus = {
         implementation = "broker";
       };
     })

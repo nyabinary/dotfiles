@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.power.binary.enable {
-      service = {
+      services = {
         power-profiles-daemon.enable = false;
         thermald.enable = true; # Intel only
         tlp.enable = true; # Laptop/Power Savings
