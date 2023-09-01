@@ -28,36 +28,38 @@
     home-manager,
     ...
   } @ inputs: {
-    nixosConfigurations."binary" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/binary/default.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            backupFileExtension = "backup";
-            users.nyanbinary = ./hosts/binary/modules/home.nix;
-          };
-          nixpkgs.overlays = [
-            mozilla.overlay
-            fenix.overlays.default
-          ];
-          system = {
-            stateVersion = "23.11";
-            autoUpgrade = {
-              enable = true;
-              flake = inputs.self.outPath;
-              flags = [
-                "--update-input"
-                "nixpkgs"
-                "-L" # print build logs
-              ];
-              allowReboot = true;
+    nixosConfigurations = {
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/binary/default.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "backup";
+              users.nyanbinary = ./hosts/binary/modules/home.nix;
             };
-          };
-        }
-      ];
-    };
+            nixpkgs.overlays = [
+              mozilla.overlay
+              fenix.overlays.default
+            ];
+            system = {
+              stateVersion = "23.11";
+              autoUpgrade = {
+                enable = true;
+                flake = inputs.self.outPath;
+                flags = [
+                  "--update-input"
+                  "nixpkgs"
+                  "-L" # print build logs
+                ];
+                allowReboot = true;
+              };
+            };
+          }
+        ];
+      };
+    }
   };
 }
