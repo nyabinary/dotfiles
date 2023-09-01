@@ -14,7 +14,7 @@
 
     #})
     (lib.mkIf config.systemModules.pipewire.binary.enable {
-      service.pipewire = {
+      services.pipewire = {
         enable = true;
         alsa.enable = true;
         pulse.enable = true;
