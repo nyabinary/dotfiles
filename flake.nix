@@ -37,7 +37,7 @@
         {
           home-manager = {
             backupFileExtension = "backup";
-            users.nyanbinary = ./hosts/binary/home.nix;
+            users.nyanbinary = ./hosts/binary/modules/home.nix;
           };
           nixpkgs.overlays = [
             mozilla.overlay
