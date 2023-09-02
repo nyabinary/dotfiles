@@ -1,13 +1,10 @@
 {...}: {
+  # Import home modules
   imports = [
-    ../../../modules/homeModules
+    ../../modules/homeModules
   ];
 
-  # State version
-  home.stateVersion = "23.11";
-  nixpkgs.config.allowUnfree = true;
-
-  # Home modules
+  # Configure home modules
   homeModules = {
     git.enable = true;
     direnv.enable = true;
@@ -15,6 +12,6 @@
     nushell.enable = true;
     helix.enable = true;
     gitui.enable = true;
-    firefox.enable = true;
+    # firefox.enable = true;
   };
 }

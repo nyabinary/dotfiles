@@ -39,7 +39,6 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      firefox.speechSynthesisSupport = true; # TODO: move
     };
   };
 

@@ -3,53 +3,57 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
     mozilla = {
       url = "github:colemickens/flake-firefox-nightly";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     nixos-hardware,
     mozilla,
     ...
-  } @ inputs: {
-    nixosConfigurations = {
-      "binary" = nixpkgs.lib.nixosSystem {
+  } @ inputs: let
+    createSystem = {
+      name,
+      home,
+      system,
+    }: let
+      version = "23.11";
+    in
+      nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs name version;
+        };
         modules = [
+          system
           home-manager.nixosModules.home-manager
-          ./hosts/binary
           {
             home-manager = {
-              backupFileExtension = "backup";
-              users.nyanbinary = ./hosts/binary/modules/home.nix;
-            };
-            system = {
-              stateVersion = "23.11";
-              autoUpgrade = {
-                enable = true;
-                flake = inputs.self.outPath;
-                flags = [
-                  "--update-input"
-                  "nixpkgs"
-                  "-L" # print build logs
-                ];
-                allowReboot = true;
+              users.${name} = {
+                imports = [home];
+                home.stateVersion = version;
+                nixpkgs.config.allowUnfree = true;
               };
             };
           }
         ];
+      };
+  in {
+    nixosConfigurations = {
+      "binary" = createSystem {
+        name = "binary";
+        home = ./hosts/binary/home.nix;
+        system = ./hosts/binary/system.nix;
       };
     };
   };
