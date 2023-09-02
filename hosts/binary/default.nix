@@ -5,8 +5,7 @@
 }: {
   imports = [
     ../shared
-    ../modules/home.nix
-    ../modules/system.nix # alternative, create modules/default.nix which imports these two
+    ./modules/system.nix # alternative, create modules/default.nix which imports these two
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
@@ -51,7 +50,6 @@
         alejandra
         protonvpn-gui
         nil
-        latest.firefox-nightly-bin
         #Others
         gnomeExtensions.appindicator
       ];

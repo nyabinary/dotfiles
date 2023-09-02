@@ -28,8 +28,8 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/binary/modules/system.nix
           home-manager.nixosModules.home-manager
+          ./hosts/binary
           {
             home-manager = {
               backupFileExtension = "backup";

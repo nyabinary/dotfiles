@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   # Nix specific settings
   nix = {
     settings = {
@@ -45,7 +42,7 @@
       firefox.speechSynthesisSupport = true; # TODO: move
     };
   };
-  
+
   # Make local channel point to our flake
   environment = {
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;

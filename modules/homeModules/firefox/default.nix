@@ -8,7 +8,7 @@
 
   config = lib.mkIf config.homeModules.firefox.enable {
     home.packages = [
-      inputs.firefox.packages.x86_64-linux.firefox-nightly-bin
+      inputs.mozilla.packages.x86_64-linux.firefox-nightly-bin
     ];
   };
 }
