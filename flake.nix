@@ -42,7 +42,6 @@
               users.${name} = {
                 imports = [home];
                 home.stateVersion = version;
-                nixpkgs.config.allowUnfree = true;
               };
             };
           }
