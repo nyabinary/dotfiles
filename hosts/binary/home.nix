@@ -12,6 +12,6 @@
     nushell.enable = true;
     helix.enable = true;
     gitui.enable = true;
-    # firefox.enable = true;
+    firefox.enable = true;
   };
 }
