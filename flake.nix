@@ -39,6 +39,8 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              extraSpecialArgs = {inherit inputs name version;};
+              useGlobalPkgs = true;
               users.${name} = {
                 imports = [home];
                 home.stateVersion = version;
