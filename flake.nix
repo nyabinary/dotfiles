@@ -41,7 +41,7 @@
           {
             home-manager = {
               extraSpecialArgs = {
-                inherit inputs; #TODO (MAKE PRETTIER)
+                inherit inputs name version; #TODO (MAKE PRETTIER)
               };
               useGlobalPkgs = true;
               users.${name} = {
