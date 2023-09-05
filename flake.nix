@@ -43,11 +43,11 @@
               extraSpecialArgs = {
                 inherit inputs name version; #TODO (MAKE PRETTIER)
               };
-              useGlobalPkgs = true;
               users.${name} = {
                 imports = [home];
                 home.stateVersion = version;
               };
+              useGlobalPkgs = true;
             };
           }
         ];
