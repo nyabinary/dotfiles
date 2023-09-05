@@ -22,17 +22,8 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
-  # Enable networking
-  networking = {
-    hostName = name;
-    networkmanager.enable = true;
-  };
-
   # Set your time zone
   time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system
   services.xserver = {
@@ -40,19 +31,6 @@
     layout = "us";
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-  };
-
-  # Enable CUPS to print documents
-  services.printing.enable = true;
-
-  # Enable sound with pipewire
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
   };
 
   # Define user account
