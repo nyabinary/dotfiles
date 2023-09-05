@@ -55,6 +55,7 @@
     nixosConfigurations = {
       "binary" = createSystem {
         name = "binary";
+        configuration = ./hosts/binary/configuration.nix;
         home = ./hosts/binary/home.nix;
         system = ./hosts/binary/system.nix;
       };
