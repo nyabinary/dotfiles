@@ -36,7 +36,7 @@
           inherit inputs name version;
         };
         modules = [
-          system
+          config
           home-manager.nixosModules.home-manager
           {
             home-manager = {
