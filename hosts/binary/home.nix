@@ -13,5 +13,6 @@
     helix.enable = true;
     gitui.enable = true;
     firefox.enable = true;
+    discord.enable = true;
   };
 }

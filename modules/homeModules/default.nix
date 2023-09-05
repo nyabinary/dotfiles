@@ -7,5 +7,6 @@
     ./helix
     ./nushell
     ./vscode
+    ./discord
   ];
 }

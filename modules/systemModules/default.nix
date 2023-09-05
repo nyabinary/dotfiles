@@ -9,5 +9,6 @@
     ./pipewire
     ./power
     ./printing
+    ./udev
   ];
 }

@@ -15,5 +15,6 @@
     pipewire.enable = true;
     power.enable = true;
     printing.enable = true;
+    udev.enable = true;
   };
 }
