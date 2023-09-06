@@ -7,7 +7,6 @@
 
   config = lib.mkIf config.systemModules.network.enable {
     networking = {
-      hostName = "binary";
       wireless.enable = false;
       wireless.iwd.enable = true;
       networkmanager.enable = true;

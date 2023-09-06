@@ -35,8 +35,21 @@
 
   # Define user account
   users.users.${name} = {
+    shell = pkgs.nushell;
     isNormalUser = true;
     description = "Niko Cantero";
     extraGroups = ["networkmanager" "wheel"];
+    packages = with pkgs; [
+    #Entertainment
+    element-desktop
+    telegram-desktop
+    tidal-hifi
+    #Tools
+    alejandra
+    protonvpn-gui
+    nil
+    #Others
+    gnomeExtensions.appindicator
+    ];
   };
 }
