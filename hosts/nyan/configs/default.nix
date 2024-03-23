@@ -1,0 +1,7 @@
+{...}: {
+  imports = [
+    ./baseConfigs
+    ./homeConfigs
+    ./systemConfigs
+  ];
+}
