@@ -1,0 +1,7 @@
+keys:
+  - &user_binary age1vdt0wzzj6u45cg9j8fenn3f7v6s7ngqv3yvl4ze2patv4r7at5yqdg5nwm
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *user_binary
